@@ -4,7 +4,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:complexType name="albumInfo">
 		<xs:sequence>
-			<xs:element name="album" type="albumInfo1"/>
+			<xs:element name="album" type="albumInfo1" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	
@@ -23,16 +23,15 @@
 	
 	<xs:complexType name="trackInfo">
 		<xs:sequence>
-			<xs:element name="track" type="trackInfo1" minOccurs="1"/>
+			<xs:element name="track" type="trackInfo1" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
-	<!-- Individual Track information -->
+		
 	<xs:complexType name="trackInfo1">
 		<xs:sequence>
-			<xs:element name="trackNumber" type="xs:integer" minOccurs="1"/>			
-			<xs:element name="trackName" type="xs:string" minOccurs="1"/>
-			<xs:element name="trackLength" type="xs:string" minOccurs="1"/>
+			<xs:element name="trackNumber" type="xs:integer" minOccurs="1" maxOccurs="unbounded"/>			
+			<xs:element name="trackName" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="trackLength" type="xs:string" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="extension" type="extensionType" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -54,5 +53,4 @@
 			<xs:element name="availableOn" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 </xs:schema>
