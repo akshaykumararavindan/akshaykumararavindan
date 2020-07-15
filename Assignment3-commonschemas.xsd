@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Akshay Kumar Aravindan-->
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:complexType name="albumInfo">
+		<xs:sequence>
+			<xs:element name="album" type="albumInfo1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="albumInfo1">
+		<xs:sequence>
+			<xs:element name="artist" type="xs:string" minOccurs="1"/>
+			<xs:element name="albumID" type="xs:positiveInteger" minOccurs="1"/>
+			<xs:element name="albumName" type="xs:string" minOccurs="1"/>
+			<xs:element name="year"	type="xs:positiveInteger" minOccurs="1"/>
+			<xs:element name="genre" type="xs:string" minOccurs="1"/>
+			<xs:element name="tracks" type="trackInfo" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="writtenBy" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="availablePlatforms" type="platformInfo" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="trackInfo">
+		<xs:sequence>
+			<xs:element name="track" type="trackInfo1" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- Individual Track information -->
+	<xs:complexType name="trackInfo1">
+		<xs:sequence>
+			<xs:element name="trackNumber" type="xs:integer" minOccurs="1"/>			
+			<xs:element name="trackName" type="xs:string" minOccurs="1"/>
+			<xs:element name="trackLength" type="xs:string" minOccurs="1"/>
+			<xs:element name="extension" type="extensionType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="extensionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="mp3" />
+			<xs:enumeration value="mp4" />
+			<xs:enumeration value="avi" />
+			<xs:enumeration value="3gp" />
+			<xs:enumeration value="wav" />
+			<xs:enumeration value="wma" />
+			<xs:enumeration value="flac" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="platformInfo">
+		<xs:sequence>
+			<xs:element name="availableOn" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>
